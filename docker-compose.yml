@@ -1,6 +1,6 @@
 services:
     redis: 
-        image: redislabs/redismod
+        image: redis:7.0.0-alpine
         container_name: redis
         ports:
             - 6379:6379
