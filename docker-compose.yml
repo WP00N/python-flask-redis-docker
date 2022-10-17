@@ -1,23 +1,20 @@
 services:
-   redis: 
+    redis: 
         image: redislabs/redismod
         container_name: redis
+        # ports:
+        #     - 6379:6379
+        command: ["redis-server", "--bind", "redis", "--port", "6379"]
+    redisinsight:
+        image: redislabs/redisinsight:latest
         ports:
-            - "6379:6379"
-        networks:
-        - my_network            
-   web:
+            - 8001:8001
+    web:
         build: .
         container_name: web
         ports:
-            - "5000:5000"
+            - 5000:5000
         volumes:
             - .:/code
         depends_on:
             - redis
-        networks:
-        - my_network            
-networks:
-    my_network:
-        external:
-        name: my_network            
