@@ -3,7 +3,8 @@ from redis import Redis
 import logging
 
 app = Flask(__name__)
-redis = Redis(host='redis', port=6379)
+# redis = Redis(host='redis', port=6379)
+redis = Redis(host='redis')
 
 @app.route('/')
 def hello():
